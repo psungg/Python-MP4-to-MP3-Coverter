@@ -3,22 +3,17 @@
 ## Code
 
 ```python
-pip install pytube
+pip install moviepy
 ```
 
 ```python
-from pytube import YouTube
+from moviepy.editor import *
 
-def YoutubeDownloader(link):
-    youtubeObject = YouTube(link)
-    youtubeObject = youtubeObject.streams.get_highest_resolution()
-    try:
-        youtubeObject.download()
-    except:
-        print("Some Errors Occurred")
-    print("Done!",link)
+mp4File = "Perfect Carrier Landing Step-by-Step BREAKDOWN.mp4"
+mp3File = "Carrier Landing.mp3"
 
-#link = "https://www.youtube.com/watch?v=cr4IHJIyd_8"
-link = input("Enter YouTube Link: ")
-YoutubeDownloader(link)
+videoclip = VideoFileClip(mp4File)
+
+audioclip = videoclip.audio
+audioclip.write_audiofile(mp3File)
 ```
